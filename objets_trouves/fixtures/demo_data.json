@@ -1,0 +1,6 @@
+[
+  {"model":"objets_trouves.categorie","pk":1,"fields":{"nom":"Électronique"}},
+  {"model":"objets_trouves.categorie","pk":2,"fields":{"nom":"Vêtements"}},
+  {"model":"objets_trouves.objettrouve","pk":1,"fields":{"titre":"Sac à dos bleu","categorie":1,"description":"Sac à dos bleu marine avec une poche extérieure.","lieu":"Bibliothèque centrale","date_decouverte":"2026-01-12","image":"objets/sac-a-dos.svg","publie_par":null,"publie_le":"2026-01-12T10:00:00Z","remis_le":null,"notes_remise":""}},
+  {"model":"objets_trouves.objettrouve","pk":2,"fields":{"titre":"Veste grise","categorie":2,"description":"Veste grise oubliée sur un banc.","lieu":"Bâtiment B","date_decouverte":"2026-01-15","image":"objets/veste-grise.svg","publie_par":null,"publie_le":"2026-01-15T10:00:00Z","remis_le":null,"notes_remise":""}}
+]

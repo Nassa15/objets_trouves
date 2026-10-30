@@ -1,0 +1,18 @@
+# Environnement et fichiers locaux
+env/
+.venv/
+db.sqlite3
+__pycache__/
+*.py[cod]
+
+# Dépendances et sorties frontend
+node_modules/
+staticfiles/
+theme/static/css/dist/
+
+# Secrets et outils locaux
+.env
+.DS_Store
+media/*
+!media/objets/
+!media/objets/*.svg

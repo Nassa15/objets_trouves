@@ -1,0 +1,4 @@
+Django==6.1
+djangorestframework==3.18.0
+django-tailwind==4.5.0
+pytailwindcss==0.3.0

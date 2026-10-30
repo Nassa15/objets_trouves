@@ -1,0 +1,31 @@
+{% load static %}
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Objets retrouvés{% endblock %} · Campus</title>
+  <link rel="stylesheet" href="{% static 'css/app.css' %}">
+</head>
+<body class="min-h-screen">
+  <div class="border-b border-[#473e5d] bg-[#211c34] text-xs text-[#d9ccda]"><div class="shell flex min-h-8 items-center justify-between gap-3"><span>Université · Vie étudiante</span><span class="hidden sm:inline">Bureau des objets trouvés · Campus</span></div></div>
+  <header class="border-b border-[#e5ded4] bg-[#29233f] text-white">
+    <nav class="shell flex min-h-[76px] flex-wrap items-center justify-between gap-4 py-4" aria-label="Navigation principale">
+      <a href="{% url 'objets_trouves:objet_list' %}" class="group flex items-center gap-3 no-underline">
+        <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-[#e56b55] text-lg font-black text-white">↗</span>
+        <span><span class="block text-[10px] font-bold uppercase tracking-[0.22em] text-[#f5bd65]">Vie étudiante</span><span class="font-serif text-xl font-bold text-white">Bureau des objets</span></span>
+      </a>
+      <div class="flex items-center gap-1 text-sm font-semibold">
+        <a class="rounded-lg px-3 py-2 text-[#e8dfe7] hover:bg-white/10 hover:text-white" href="{% url 'objets_trouves:objet_list' %}">Les Objets</a>
+        {% if user.is_authenticated %}
+          <a class="rounded-lg px-3 py-2 text-[#e8dfe7] hover:bg-white/10 hover:text-white" href="{% url 'objets_trouves:mes_reclamations' %}">Mes réclamations</a>
+          {% if user.is_staff %}<a class="rounded-lg px-3 py-2 text-[#e8dfe7] hover:bg-white/10 hover:text-white" href="{% url 'objets_trouves:gestionnaire' %}">Gestionnaire</a>{% endif %}
+          <form method="post" action="{% url 'logout' %}" class="ml-1">{% csrf_token %}<button class="rounded-lg border border-white/20 px-3 py-2 text-[#e8dfe7] hover:bg-white/10 hover:text-white" type="submit">Déconnexion</button></form>
+        {% else %}<a class="rounded-lg px-3 py-2 text-[#e8dfe7] hover:bg-white/10 hover:text-white" href="{% url 'login' %}">Connexion</a><a class="button-primary ml-1" href="{% url 'objets_trouves:inscription' %}">Créer un compte</a>{% endif %}
+      </div>
+    </nav>
+  </header>
+  {% if messages %}<div class="shell space-y-2 pt-5" aria-live="polite">{% for message in messages %}<div class="notice {% if 'error' in message.tags %}notice-error{% elif 'success' in message.tags %}notice-success{% else %}notice-info{% endif %}">{{ message }}</div>{% endfor %}</div>{% endif %}
+  {% block content %}{% endblock %}
+  <footer class="shell mt-16 border-t border-[#e5ded4] py-8 text-sm text-[#736d78]"><div class="flex flex-wrap justify-between gap-3"><p>Service vie étudiante · Bureau des objets trouvés</p><p>Les réclamations restent confidentielles.</p></div></footer>
+</body>
+</html>
